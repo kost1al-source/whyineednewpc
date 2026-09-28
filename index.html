@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Почему мне нужен новый компьютер</title>
+<style>
+  :root{
+    --bg:#090a0d;
+    --panel:#111318;
+    --panel2:#161922;
+    --text:#f3f5f7;
+    --muted:#9ca3af;
+    --line:#242833;
+    --accent:#ffffff;
+    --soft:#c9ced8;
+    --good:#dfe6ee;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:
+      radial-gradient(circle at 20% 0%,rgba(255,255,255,.07),transparent 32%),
+      radial-gradient(circle at 80% 10%,rgba(255,255,255,.04),transparent 28%),
+      var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1180px,92vw);margin:auto}
+  .nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(18px);
+    background:rgba(9,10,13,.68);
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .navin{height:66px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-weight:800;letter-spacing:.02em}
+  .navlinks{display:flex;gap:18px;color:var(--muted);font-size:14px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:13px 18px;border-radius:14px;border:1px solid var(--line);
+    background:#f5f7fa;color:#0b0c0f;font-weight:800;
+    transition:.25s transform,.25s opacity;
+  }
+  .btn:hover{transform:translateY(-2px);opacity:.92}
+  .btn.dark{background:transparent;color:var(--text)}
+  .hero{
+    min-height:84vh;display:grid;align-items:center;
+    padding:76px 0 54px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center}
+  .eyebrow{
+    display:inline-flex;gap:8px;align-items:center;
+    color:var(--soft);font-size:13px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.18em;margin-bottom:18px
+  }
+  h1{font-size:clamp(52px,8vw,104px);line-height:.92;margin:0 0 24px;letter-spacing:-.055em}
+  .lead{font-size:clamp(18px,2vw,24px);line-height:1.5;color:var(--soft);max-width:760px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .machine{
+    border:1px solid var(--line);border-radius:28px;padding:24px;
+    background:linear-gradient(180deg,#171a21,#101216);
+    box-shadow:0 30px 100px rgba(0,0,0,.36);
+    position:relative;overflow:hidden;
+  }
+  .machine:before{
+    content:"";position:absolute;inset:-30%;
+    background:radial-gradient(circle,rgba(255,255,255,.10),transparent 38%);
+    animation:float 8s ease-in-out infinite alternate;
+  }
+  @keyframes float{to{transform:translate(14%,8%)}}
+  .spec{position:relative;display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line)}
+  .spec:last-child{border-bottom:0}
+  .spec span{color:var(--muted)}
+  .spec b{font-size:18px}
+  section{padding:86px 0}
+  .kicker{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.17em;font-weight:800}
+  h2{font-size:clamp(38px,5vw,68px);line-height:1.02;letter-spacing:-.04em;margin:10px 0 18px}
+  .section-lead{font-size:19px;line-height:1.6;color:var(--soft);max-width:800px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+  .card{
+    min-height:220px;border:1px solid var(--line);border-radius:22px;
+    background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015));
+    padding:24px;position:relative;overflow:hidden;
+  }
+  .card .num{font-size:54px;font-weight:900;letter-spacing:-.06em;color:#fff}
+  .card h3{font-size:22px;margin:10px 0 8px}
+  .card p{color:var(--muted);line-height:1.55;margin:0}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+  .compare .box{border-radius:24px;padding:28px;border:1px solid var(--line);background:var(--panel)}
+  .compare .old{opacity:.74}
+  .compare h3{font-size:28px;margin:0 0 22px}
+  .row{display:flex;justify-content:space-between;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:0}
+  .row span{color:var(--muted)}
+  .row strong{text-align:right}
+  .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+  .step{padding:24px;border-left:2px solid #fff;background:linear-gradient(90deg,rgba(255,255,255,.05),transparent);border-radius:0 18px 18px 0}
+  .step small{color:var(--muted);text-transform:uppercase;letter-spacing:.14em}
+  .step h3{font-size:23px;margin:10px 0}
+  .step p{margin:0;color:var(--soft);line-height:1.55}
+  .quote{
+    border:1px solid var(--line);border-radius:28px;padding:34px;
+    background:linear-gradient(135deg,#16191f,#0f1115);
+    font-size:clamp(28px,4vw,54px);line-height:1.12;letter-spacing:-.035em;
+  }
+  .quote b{display:block;margin-top:18px;font-size:15px;color:var(--muted);letter-spacing:0}
+  .proof{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+  .proof .card{min-height:180px}
+  .price{
+    display:flex;align-items:end;justify-content:space-between;gap:20px;
+    border:1px solid var(--line);border-radius:28px;padding:34px;margin-top:32px;
+    background:linear-gradient(180deg,#15181e,#0f1115)
+  }
+  .price strong{font-size:clamp(56px,8vw,96px);letter-spacing:-.06em}
+  .price p{max-width:520px;color:var(--soft);line-height:1.55}
+  footer{padding:44px 0 70px;border-top:1px solid var(--line);color:var(--muted)}
+  .reveal{opacity:0;transform:translateY(20px);transition:.7s ease}
+  .reveal.show{opacity:1;transform:none}
+  @media(max-width:860px){
+    .hero-grid,.compare,.proof{grid-template-columns:1fr}
+    .grid3,.timeline{grid-template-columns:1fr}
+    .navlinks{display:none}
+    .price{align-items:flex-start;flex-direction:column}
+    .hero{padding-top:54px}
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap navin">
+    <div class="brand">KOST1AL / PC</div>
+    <div class="navlinks">
+      <a href="#why">Зачем</a>
+      <a href="#compare">Сравнение</a>
+      <a href="#plan">План</a>
+      <a href="#price">Цена</a>
+    </div>
+    <a class="btn dark" href="#final">Итог</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Не просто игровой компьютер</div>
+      <h1>Инструмент<br>для моих проектов.</h1>
+      <p class="lead">
+        Новый ПК нужен мне не ради одной игры. Это рабочая машина для программирования,
+        монтажа, стримов, кибербезопасности, DX Reforged, LBC+ и будущей учёбы.
+      </p>
+      <div class="actions">
+        <a class="btn" href="#why">Почему он нужен</a>
+        <a class="btn dark" href="#plan">Что я сделаю за 3 месяца</a>
+      </div>
+    </div>
+
+    <div class="machine">
+      <div class="spec"><span>Процессор</span><b>Intel Core i5-14400</b></div>
+      <div class="spec"><span>Видеокарта</span><b>RTX 4060</b></div>
+      <div class="spec"><span>Оперативная память</span><b>32 GB DDR5</b></div>
+      <div class="spec"><span>Накопитель</span><b>1 TB SSD</b></div>
+      <div class="spec"><span>Цена варианта</span><b>19 000 Kč</b></div>
+    </div>
+  </div>
+</header>
+
+<section id="why">
+  <div class="wrap">
+    <div class="kicker">Почему сейчас</div>
+    <h2>Мой нынешний ПК уже ограничивает то, что я могу делать.</h2>
+    <p class="section-lead">
+      Когда компьютер зависает или выключается под нагрузкой, проблема уже не в удобстве.
+      Он становится ограничением для стримов, записи видео, монтажа и разработки.
+    </p>
+
+    <div class="grid3">
+      <div class="card reveal">
+        <div class="num">01</div>
+        <h3>Контент</h3>
+        <p>Запись видео, монтаж, прямые эфиры и нормальная демонстрация DX Reforged без постоянной борьбы с производительностью.</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">02</div>
+        <h3>Разработка</h3>
+        <p>Сайты, программирование, локальные серверы, инструменты разработчика и работа сразу с несколькими приложениями.</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">03</div>
+        <h3>Учёба</h3>
+        <p>Кибербезопасность, виртуальные машины, Linux, тестовые среды и проекты, которые требуют больше ресурсов, чем обычный браузер.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="compare">
+  <div class="wrap">
+    <div class="kicker">Старый и новый</div>
+    <h2>Это не маленький апгрейд. Это переход на современную платформу.</h2>
+
+    <div class="compare">
+      <div class="box old reveal">
+        <h3>Сейчас</h3>
+        <div class="row"><span>CPU</span><strong>Intel Core i5, 3-е поколение</strong></div>
+        <div class="row"><span>GPU</span><strong>GT 1030</strong></div>
+        <div class="row"><span>RAM</span><strong>16 GB DDR3</strong></div>
+        <div class="row"><span>Главная проблема</span><strong>Старая платформа</strong></div>
+      </div>
+      <div class="box reveal">
+        <h3>Новый вариант</h3>
+        <div class="row"><span>CPU</span><strong>Intel Core i5-14400</strong></div>
+        <div class="row"><span>GPU</span><strong>RTX 4060</strong></div>
+        <div class="row"><span>RAM</span><strong>32 GB DDR5</strong></div>
+        <div class="row"><span>Главный плюс</span><strong>Запас под мои задачи</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="wrap">
+    <div class="kicker">Первые три месяца</div>
+    <h2>Компьютер сразу пойдёт в работу.</h2>
+    <p class="section-lead">Моя цель — не просто получить новое железо, а использовать его как инструмент и показать результат.</p>
+
+    <div class="timeline">
+      <div class="step reveal">
+        <small>Месяц 1</small>
+        <h3>DX Reforged</h3>
+        <p>Доделать ключевые системы, снимать процесс разработки, начать делать качественный контент и готовить проект к запуску.</p>
+      </div>
+      <div class="step reveal">
+        <small>Месяц 2</small>
+        <h3>LBC+</h3>
+        <p>Продолжить разработку сайта, улучшить интерфейс, подготовить запуск, рекламу и первые реальные сценарии использования.</p>
+      </div>
+      <div class="step reveal">
+        <small>Месяц 3</small>
+        <h3>Контент + учёба</h3>
+        <p>Регулярные видео и стримы, монтаж, программирование и подготовка среды для будущего обучения кибербезопасности.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="quote reveal">
+      Я прошу не «игровую игрушку». Я прошу один нормальный компьютер,
+      который будет использоваться каждый день для проектов, контента и учёбы.
+      <b>Главная мысль</b>
+    </div>
+
+    <div class="proof">
+      <div class="card reveal">
+        <h3>Почему не дешёвый временный вариант</h3>
+        <p>Покупка слабого ПК сейчас, а затем ещё одного через короткое время — двойные расходы. Логичнее сразу взять конфигурацию с запасом под реальные задачи.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Почему не апгрейд старого</h3>
+        <p>При переходе на современную платформу придётся менять не одну деталь: процессор, материнскую плату, память, видеокарту и, возможно, блок питания. Это уже почти новая сборка.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="price">
+  <div class="wrap">
+    <div class="kicker">Цена вопроса</div>
+    <h2>19 000 Kč за готовый вариант.</h2>
+    <div class="price reveal">
+      <strong>19 000</strong>
+      <p>
+        Я рассматриваю б/у вариант именно потому, что он заметно дешевле нового компьютера
+        такого класса. Перед покупкой его нужно нормально проверить. Если продавец не даст
+        протестировать компьютер — его просто не покупать.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="final">
+  <div class="wrap">
+    <div class="kicker">Итог</div>
+    <h2>Это покупка не на неделю.</h2>
+    <p class="section-lead">
+      Компьютер нужен мне уже сейчас, а дальше он останется основным инструментом для
+      разработки, контента и учёбы. Даже если один проект изменится, сами задачи никуда не исчезнут.
+    </p>
+    <div class="actions">
+      <a class="btn" href="#compare">Ещё раз сравнить</a>
+      <a class="btn dark" href="#plan">Посмотреть план</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Сделано как пример того, какие сайты и презентации я смогу создавать ещё быстрее и качественнее на новом компьютере.</div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    })
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
